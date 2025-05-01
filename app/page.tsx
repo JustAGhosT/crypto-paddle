@@ -1,5 +1,5 @@
-import GameManager from "../game-manager"
+import WebsiteIntegration from "@/components/website-integration"
 
 export default function Home() {
-  return <GameManager />
+  return <WebsiteIntegration />
 }

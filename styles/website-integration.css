@@ -1,0 +1,107 @@
+/* Additional styles for website integration */
+.game-container {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Subtle glow effect for power-ups that matches website theme */
+@keyframes subtle-glow {
+  0% {
+    box-shadow: 0 0 5px 2px rgba(97, 174, 238, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px 3px rgba(97, 174, 238, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px 2px rgba(97, 174, 238, 0.2);
+  }
+}
+
+.power-up-block {
+  animation: subtle-glow 3s infinite;
+}
+
+/* Refined penalty flash animation */
+@keyframes subtle-penalty-flash {
+  0% {
+    background-color: rgba(239, 68, 68, 0);
+  }
+  30% {
+    background-color: rgba(239, 68, 68, 0.15);
+  }
+  100% {
+    background-color: rgba(239, 68, 68, 0);
+  }
+}
+
+.penalty-flash {
+  position: absolute;
+  animation: subtle-penalty-flash 0.8s ease-out;
+}
+
+/* Enhanced point indicators with website colors */
+.point-indicator {
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(15, 23, 42, 0.7);
+}
+
+.point-gain {
+  color: #10b981;
+}
+
+.point-loss {
+  color: #ef4444;
+}
+
+/* Website theme integration */
+.website-theme .high-score-menu {
+  background-color: #1e293b;
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.website-theme .btn-primary {
+  background-color: #3b82f6;
+}
+
+.website-theme .btn-primary:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.website-theme .btn-success {
+  background-color: #10b981;
+}
+
+.website-theme .btn-success:hover:not(:disabled) {
+  background-color: #059669;
+}
+
+/* Toggle button styles */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.toggle-button {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.toggle-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.toggle-button:not(.active) {
+  background-color: #1e293b;
+  color: #9ca3af;
+}
+
+.toggle-button:not(.active):hover {
+  background-color: #2d3748;
+  color: white;
+}

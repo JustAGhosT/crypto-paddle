@@ -1,0 +1,49 @@
+/* Fullscreen mode styles */
+.game-container:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f172a;
+}
+
+.game-container:fullscreen canvas {
+  height: calc(100vh - 100px);
+}
+
+.game-container:fullscreen .high-score-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Fullscreen button hover effect */
+.fullscreen-button:hover {
+  transform: scale(1.1);
+}
+
+/* Fullscreen button active effect */
+.fullscreen-button:active {
+  transform: scale(0.95);
+}
+
+/* Ensure proper z-index in fullscreen mode */
+.game-container:fullscreen .fullscreen-button,
+.game-container:fullscreen .competition-overlay,
+.game-container:fullscreen .version-badge {
+  z-index: 9999;
+}
+
+/* Ensure the game canvas fills the available space */
+.game-container:fullscreen .canvas-container {
+  width: 100vw;
+  height: calc(100vh - 100px);
+}
+
+/* Ensure overlays are properly positioned in fullscreen */
+.game-container:fullscreen .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}

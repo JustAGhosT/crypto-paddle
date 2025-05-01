@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import game-specific styles */
+@import "../styles/game.css";
+@import "../styles/website-integration.css";
+@import "../styles/fullscreen.css";
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 15, 23, 42;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
