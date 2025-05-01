@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react"
 import { useGameContext } from "@/contexts/game-context"
 import type { PowerUpType } from "@/types/game-types"
 import { PIXEL_MAP } from "@/utils/pixel-map"
-import { LETTER_SPACING } from "@/utils/constants"
+import { LETTER_SPACING, GAME_PHASES, EDUCATIONAL_ELEMENTS, PERFORMANCE_METRICS } from "@/utils/constants"
 import { getHighScore, getDailyGamesPlayed, incrementDailyGamesPlayed } from "@/utils/storage"
 
 // Define the PowerUp type
@@ -39,6 +39,11 @@ export default function GameCanvas() {
     walletConnected,
     walletBalance,
     getCurrentLevelTheme,
+    captureSignal,
+    defendVault,
+    makeStrategyDecision,
+    updateEducationalProgress,
+    updatePerformanceMetrics,
   } = useGameContext()
 
   // Initialize game when canvas is ready

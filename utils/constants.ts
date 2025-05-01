@@ -50,3 +50,24 @@ export const LEVEL_THEMES = [
 
 // Fixed time step for physics updates (in ms)
 export const PHYSICS_TIME_STEP = 16.67 // ~60 FPS
+
+// New constants for game phases
+export const GAME_PHASES = {
+  SIGNAL_HUNT: "Signal Hunt",
+  VAULT_DEFENSE: "Vault Defense",
+  STRATEGY_DECISION: "Strategy Decision",
+}
+
+// New constants for educational elements
+export const EDUCATIONAL_ELEMENTS = {
+  SIGNAL_CAPTURE: "Signal Capture",
+  VAULT_DEFENSE: "Vault Defense",
+  STRATEGY_DECISION: "Strategy Decision",
+}
+
+// New constants for performance metrics
+export const PERFORMANCE_METRICS = {
+  SIGNAL_ACCURACY: "Signal Accuracy",
+  VAULT_HP: "Vault HP",
+  PORTFOLIO_BALANCE: "Portfolio Balance",
+}

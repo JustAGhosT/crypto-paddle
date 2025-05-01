@@ -1,3 +1,5 @@
+import { EDUCATIONAL_ELEMENTS, PERFORMANCE_METRICS } from "@/utils/constants"
+
 // Function to get high score from localStorage
 export function getHighScore(): number {
   if (typeof window === "undefined") return 0
@@ -56,4 +58,34 @@ export function getTimeUntilReset(): { hours: number; minutes: number } {
   const minutes = Math.floor((timeUntilReset % (1000 * 60 * 60)) / (1000 * 60))
 
   return { hours, minutes }
+}
+
+// Function to save educational progress to localStorage
+export function saveEducationalProgress(progress: Record<string, boolean>): void {
+  if (typeof window === "undefined") return
+
+  localStorage.setItem("educationalProgress", JSON.stringify(progress))
+}
+
+// Function to load educational progress from localStorage
+export function loadEducationalProgress(): Record<string, boolean> {
+  if (typeof window === "undefined") return {}
+
+  const savedProgress = localStorage.getItem("educationalProgress")
+  return savedProgress ? JSON.parse(savedProgress) : {}
+}
+
+// Function to save performance metrics to localStorage
+export function savePerformanceMetrics(metrics: Record<string, number>): void {
+  if (typeof window === "undefined") return
+
+  localStorage.setItem("performanceMetrics", JSON.stringify(metrics))
+}
+
+// Function to load performance metrics from localStorage
+export function loadPerformanceMetrics(): Record<string, number> {
+  if (typeof window === "undefined") return {}
+
+  const savedMetrics = localStorage.getItem("performanceMetrics")
+  return savedMetrics ? JSON.parse(savedMetrics) : {}
 }

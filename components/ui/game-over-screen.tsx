@@ -169,6 +169,21 @@ export default function GameOverScreen() {
             <p className="text-center text-sm text-gray-400 mt-4">Come back tomorrow for more games!</p>
           )}
         </div>
+
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => console.log("Share Result")}
+            className="bg-[#3B82F6] hover:bg-[#2563EB] text-white font-bold py-2 px-4 rounded"
+          >
+            Share Result
+          </button>
+          <button
+            onClick={() => console.log("Try Mini-Sandbox")}
+            className="bg-[#10B981] hover:bg-[#059669] text-white font-bold py-2 px-4 rounded ml-4"
+          >
+            Try Mini-Sandbox
+          </button>
+        </div>
       </div>
     </div>
   )

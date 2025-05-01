@@ -26,6 +26,13 @@ interface GameState {
   isOverlayVisible: boolean
   isRestingState: boolean
   titleRotation: number
+  currentPhase: string
+  signalsCaptured: number
+  vaultHP: number
+  portfolioBalance: number
+  strategy: string
+  educationalProgress: Record<string, boolean>
+  performanceMetrics: Record<string, number>
 }
 
 interface GameContextType {
@@ -52,6 +59,11 @@ interface GameContextType {
   setHighScores: React.Dispatch<React.SetStateAction<{ name: string; score: number }[]>>
   getCurrentLevelTheme: () => string[]
   buyExtraLife: () => void
+  captureSignal: () => void
+  defendVault: () => void
+  makeStrategyDecision: (strategy: string) => void
+  updateEducationalProgress: (topic: string) => void
+  updatePerformanceMetrics: (metric: string, value: number) => void
 }
 
 const defaultGameState: GameState = {
@@ -72,6 +84,13 @@ const defaultGameState: GameState = {
   isOverlayVisible: false, // Initially hidden
   isRestingState: true, // Initially in resting state
   titleRotation: 0, // Initial rotation angle
+  currentPhase: "Signal Hunt",
+  signalsCaptured: 0,
+  vaultHP: 100,
+  portfolioBalance: 0,
+  strategy: "",
+  educationalProgress: {},
+  performanceMetrics: {},
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined)
@@ -125,6 +144,47 @@ export function GameProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  const captureSignal = () => {
+    setGameState((prev) => ({
+      ...prev,
+      signalsCaptured: prev.signalsCaptured + 1,
+    }))
+  }
+
+  const defendVault = () => {
+    setGameState((prev) => ({
+      ...prev,
+      vaultHP: prev.vaultHP - 10,
+    }))
+  }
+
+  const makeStrategyDecision = (strategy: string) => {
+    setGameState((prev) => ({
+      ...prev,
+      strategy,
+    }))
+  }
+
+  const updateEducationalProgress = (topic: string) => {
+    setGameState((prev) => ({
+      ...prev,
+      educationalProgress: {
+        ...prev.educationalProgress,
+        [topic]: true,
+      },
+    }))
+  }
+
+  const updatePerformanceMetrics = (metric: string, value: number) => {
+    setGameState((prev) => ({
+      ...prev,
+      performanceMetrics: {
+        ...prev.performanceMetrics,
+        [metric]: value,
+      },
+    }))
+  }
+
   return (
     <GameContext.Provider
       value={{
@@ -151,6 +211,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
         setHighScores,
         getCurrentLevelTheme,
         buyExtraLife,
+        captureSignal,
+        defendVault,
+        makeStrategyDecision,
+        updateEducationalProgress,
+        updatePerformanceMetrics,
       }}
     >
       {children}

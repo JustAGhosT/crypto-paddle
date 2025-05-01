@@ -11,6 +11,9 @@ import HoverOverlay from "../ui/hover-overlay"
 import FullscreenButton from "../ui/fullscreen-button"
 import CryptoBackground from "../ui/crypto-background"
 import CryptoTicker from "../ui/crypto-ticker"
+import SignalHunt from "../ui/signal-hunt"
+import VaultDefense from "../ui/vault-defense"
+import StrategyDecision from "../ui/strategy-decision"
 
 export default function GameContainer() {
   // Initial setup on component mount
@@ -38,6 +41,9 @@ export default function GameContainer() {
         <GameVersion />
         <CompetitionOverlay />
         <FullscreenButton />
+        <SignalHunt />
+        <VaultDefense />
+        <StrategyDecision />
       </div>
     </GameProvider>
   )

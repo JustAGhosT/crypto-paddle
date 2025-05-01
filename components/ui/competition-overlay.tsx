@@ -11,6 +11,7 @@ interface Competition {
   totalPot: number
   status: "open" | "filling" | "in-progress" | "completed"
   endsIn: number // seconds
+  type: "standard" | "pro" | "team"
 }
 
 export default function CompetitionOverlay() {
@@ -26,6 +27,7 @@ export default function CompetitionOverlay() {
       totalPot: 0.02,
       status: "filling",
       endsIn: 3600, // 1 hour
+      type: "standard",
     },
     {
       id: "comp-2",
@@ -35,6 +37,7 @@ export default function CompetitionOverlay() {
       totalPot: 0.25,
       status: "filling",
       endsIn: 7200, // 2 hours
+      type: "pro",
     },
     {
       id: "comp-3",
@@ -44,6 +47,7 @@ export default function CompetitionOverlay() {
       totalPot: 0.1,
       status: "filling",
       endsIn: 1800, // 30 minutes
+      type: "team",
     },
   ])
 
@@ -146,6 +150,10 @@ export default function CompetitionOverlay() {
                   <span>Ends in:</span>
                   <span>{formatTime(selectedCompetition.endsIn)}</span>
                 </div>
+                <div className="info-row">
+                  <span>Type:</span>
+                  <span>{selectedCompetition.type}</span>
+                </div>
               </div>
 
               <div className="competition-actions">
@@ -179,6 +187,7 @@ export default function CompetitionOverlay() {
                       <span className="players-required">{competition.playersRequired}</span> players
                     </div>
                     <div className="time-remaining">{formatTime(competition.endsIn)}</div>
+                    <div className="competition-type">{competition.type}</div>
                   </div>
                 </div>
               ))}

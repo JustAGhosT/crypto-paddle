@@ -26,10 +26,19 @@ export default function LandingPage() {
 
   const gamesRemaining = gameState.dailyGamesLimit - gameState.gamesPlayedToday
 
-  const startGame = () => {
+  const startGame = (mode: "standard" | "pro") => {
     setGameState((prev) => ({
       ...prev,
       showLandingPage: false,
+      gameMode: mode,
+    }))
+  }
+
+  const handleProRunClick = () => {
+    // Show sign-up modal for Pro Run
+    setGameState((prev) => ({
+      ...prev,
+      showSignUpModal: true,
     }))
   }
 
@@ -82,18 +91,25 @@ export default function LandingPage() {
             </div>
 
             <button
-              onClick={startGame}
+              onClick={() => startGame("standard")}
               disabled={gamesRemaining === 0}
               className={`w-full py-3 rounded-lg font-bold text-lg transition-colors ${
                 gamesRemaining > 0 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-600 cursor-not-allowed"
               }`}
             >
-              {gamesRemaining > 0 ? "Start Game" : "No Games Remaining Today"}
+              {gamesRemaining > 0 ? "Start 90-Second Game" : "No Games Remaining Today"}
             </button>
 
             {gamesRemaining === 0 && (
               <p className="mt-4 text-center text-sm text-gray-400">Come back tomorrow for more games!</p>
             )}
+
+            <button
+              onClick={handleProRunClick}
+              className="w-full py-3 mt-4 rounded-lg font-bold text-lg bg-green-600 hover:bg-green-700"
+            >
+              Start 5-Minute Pro Run
+            </button>
           </div>
 
           {/* Column 2: How to Play */}
