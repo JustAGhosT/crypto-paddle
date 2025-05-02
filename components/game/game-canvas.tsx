@@ -6,6 +6,8 @@ import type { PowerUpType } from "@/types/game-types"
 import { PIXEL_MAP } from "@/utils/pixel-map"
 import { LETTER_SPACING, GAME_PHASES, EDUCATIONAL_ELEMENTS, PERFORMANCE_METRICS } from "@/utils/constants"
 import { getHighScore, getDailyGamesPlayed, incrementDailyGamesPlayed } from "@/utils/storage"
+import Phaser from 'phaser';
+import BreakoutScene from '@/scenes/BreakoutScene';
 
 // Define the PowerUp type
 interface PowerUp {
@@ -178,10 +180,29 @@ export default function GameCanvas() {
     window.addEventListener("resize", resizeCanvas)
     resizeCanvas()
 
+    // Initialize Phaser game
+    const config = {
+      type: Phaser.AUTO,
+      width: canvas.width,
+      height: canvas.height,
+      parent: canvas.parentElement,
+      scene: BreakoutScene,
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 0 },
+          debug: false
+        }
+      }
+    };
+
+    const game = new Phaser.Game(config);
+
     return () => {
       window.removeEventListener("resize", resizeCanvas)
       canvas.removeEventListener("mousemove", handleMouseMove)
       canvas.removeEventListener("click", handleClick)
+      game.destroy(true)
     }
   }, [
     gameState.showLandingPage,

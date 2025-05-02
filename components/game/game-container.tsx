@@ -14,6 +14,7 @@ import CryptoTicker from "../ui/crypto-ticker"
 import SignalHunt from "../ui/signal-hunt"
 import VaultDefense from "../ui/vault-defense"
 import StrategyDecision from "../ui/strategy-decision"
+import BreakoutScene from '@/scenes/BreakoutScene';
 
 export default function GameContainer() {
   // Initial setup on component mount

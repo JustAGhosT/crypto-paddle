@@ -7,6 +7,7 @@ import type React from "react"
 import { createContext, useContext, useState, useRef, type ReactNode } from "react"
 import type { Ball, Paddle, Pixel, PowerUp, PointLossIndicator } from "@/types/game-types"
 import { LEVEL_THEMES } from "@/utils/constants"
+import BreakoutScene from '@/scenes/BreakoutScene';
 
 interface GameState {
   score: number
